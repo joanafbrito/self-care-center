@@ -6,3 +6,11 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
+h1 {
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+h1 img {
+  display: inline;
+  height: 30px;
+}
