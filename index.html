@@ -5,11 +5,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>
-      <img src="./assets/stars.svg" alt="stars">
-      Self Care Center
-      <img src="./assgit  ets/stars.svg" alt="stars">
-    </h1>
+    <section id="header">
+      <h1>
+        <img src="./assets/stars.svg" alt="stars">
+        Self Care Center
+        <img src="./assets/stars.svg" alt="stars">
+      </h1>
+    </section>
+
+    <section id="question">
+      <h2>Which type of message?</h2>
+      
+      <form class="message-type" name="messageForm">
+        <label for="affirmation">
+          <input id="affirmation" type="radio" name="type" value="affirmation">
+          affirmation
+        </label>
+
+        <label for="mantra">
+          <input id="mantra" type="radio" name="type" value="mantra">
+          mantra
+        </label>
+
+        <button id="receive-message">Receive Message</button>
+      </form>
+    </section>
+
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
