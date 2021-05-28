@@ -6,11 +6,79 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
-h1 {
-  font-family: 'Quicksand', sans-serif;
-  text-align: center;
+html {
+  line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
 }
+
+body {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#134d71+0,78a7c6+50,f7e4bf+100 */
+  background: #134d71; /* Old browsers */
+  background: -moz-linear-gradient(top,  #134d71 0%, #78a7c6 50%, #f7e4bf 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #134d71 0%,#78a7c6 50%,#f7e4bf 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #134d71 0%,#78a7c6 50%,#f7e4bf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#134d71', endColorstr='#f7e4bf',GradientType=0 ); /* IE6-9 */
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #ffffff;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
 h1 img {
   display: inline;
-  height: 30px;
+  height: 50px;
+}
+
+section#question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+section#question form.message-type {
+  background-color: #ffffff;
+  width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+section#question form.message-type label {
+  font-style: italic;
+}
+
+section#question form.message-type label[for="affirmation"] {
+  margin-right: 100px;
+
+}
+
+
+section#question form.message-type button {
+  display: block;
+  border: 0;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  font-family: 'Quicksand', sans-serif;
+  padding: 5px 20px;
+  margin: 25px auto 0;
+  width: 150px;
+
 }
