@@ -119,13 +119,13 @@ form.message-type button.primary:hover {
   background-color: #337d91;
 }
 
-form.message-type button#add-message {
+form.message-type button#add-message-button {
   background-color: #ffffff;
   color:#134d71;
   border:1px solid #cccccc;
 }
 
-form.message-type button#add-message:hover {
+form.message-type button#add-message-button:hover {
   background-color: #e7e7e7;
 }
 
@@ -155,4 +155,10 @@ section#message-box form {
 
 section#message-box form #submit {
   margin-top: 10px;
+}
+section#message-box form #error-message {
+  display: block;
+  text-align: center;
+  color: red;
+  width: 100%;
 }
