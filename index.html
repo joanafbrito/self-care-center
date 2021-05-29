@@ -17,41 +17,42 @@
       <section id="question">
         <h2>Which type of message?</h2>
 
-        <form class="message-type" name="messageForm">
+        <form id="receive-message-form" class="message-type" name="messageForm">
           <label for="affirmation">
-            <input id="affirmation" type="radio" name="type" value="affirmation">
+            <input id="affirmation" type="radio" name="type" value="affirmations">
             affirmation
           </label>
 
           <label for="mantra">
-            <input id="mantra" type="radio" name="type" value="mantra">
+            <input id="mantra" type="radio" name="type" value="mantras">
             mantra
           </label>
 
-          <button id="receive-message" class="primary">Receive Message</button>
-          <button id="add-message">+ Add Message</button>
+          <button id="receive-message-button" class="primary">Receive Message</button>
+          <button id="add-message-button">+ Add Message</button>
         </form>
       </section>
 
       <section id="message-box">
-        <img id="meditate" src="assets/meditate.svg" alt="meditate">
+        <img id="meditate-img" src="assets/meditate.svg" alt="meditate">
 
-        <p class="hidden" id="message">Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.</p>
+        <p id="message-txt" class="hidden"></p>
 
-        <form class="message-type hidden" name="newMessageForm">
+        <form id="new-message-form" class="message-type hidden" name="newMessageForm">
           <label for="new-affirmation">
-            <input id="new-affirmation" type="radio" name="type" value="affirmation">
+            <input id="new-affirmation" type="radio" name="new-type" value="affirmations">
             affirmation
           </label>
 
           <label for="new-mantra">
-            <input id="new-mantra" type="radio" name="type" value="mantra">
+            <input id="new-mantra" type="radio" name="new-type" value="mantras">
             mantra
           </label>
 
           <input id="message-field" type="text" placeholder="Add your message here">
 
-          <button id="submit" class="primary">Submit</button>
+          <button id="submit-button" class="primary">Submit</button>
+          <strong id="error-message" class="hidden">Error: Please select affirtmation or mantra!</strong>
 
         </form>
       </section>
