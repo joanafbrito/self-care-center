@@ -12,6 +12,9 @@ html {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#134d71+0,78a7c6+50,f7e4bf+100 */
   background: #134d71; /* Old browsers */
   background: -moz-linear-gradient(top,  #134d71 0%, #78a7c6 50%, #f7e4bf 100%); /* FF3.6-15 */
@@ -21,6 +24,18 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75vh;
+  min-height: 700px;
+}
+
+.hidden {
+  display: none!important;
 }
 
 h1, h2 {
@@ -33,15 +48,20 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  margin-top: 50px;
-  margin-bottom: 75px;
+  margin: 0;
 }
+
 h2 {
   font-size: 20px;
   margin-bottom: 10px;
+  margin-top: 0;
 }
 
-h1 img {
+section#header {
+  overflow: auto;
+}
+
+section#header h1 img {
   display: inline;
   height: 50px;
 }
@@ -53,32 +73,86 @@ section#question {
 
 }
 
-section#question form.message-type {
+form.message-type {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #ffffff;
   width: 500px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 25px;
+  border-radius: 7px;
   text-align: center;
 }
-section#question form.message-type label {
+
+form.message-type label {
   font-style: italic;
+  width: 50%;
 }
 
-section#question form.message-type label[for="affirmation"] {
-  margin-right: 100px;
-
-}
-
-
-section#question form.message-type button {
+form.message-type button {
   display: block;
   border: 0;
-  background-color: #134d71;
   color: #ffffff;
   border-radius: 5px;
   font-family: 'Quicksand', sans-serif;
   padding: 5px 20px;
   margin: 25px auto 0;
   width: 150px;
+  cursor:pointer;
+  height: 28px;
 
+}
+
+form.message-type #message-field {
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 7px;
+  border: 1px solid #999999;
+}
+
+form.message-type button.primary {
+  background-color: #134d71;
+}
+
+form.message-type button.primary:hover {
+  background-color: #337d91;
+}
+
+form.message-type button#add-message {
+  background-color: #ffffff;
+  color:#134d71;
+  border:1px solid #cccccc;
+}
+
+form.message-type button#add-message:hover {
+  background-color: #e7e7e7;
+}
+
+section#message-box {
+  display:flex;
+  background-color: #ffffff;
+  border-radius: 7px;
+  width: 700px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+section#message-box img {
+  height: 75px;
+}
+
+section#message-box p {
+  text-align: justify;
+}
+
+section#message-box form {
+  width: 100%;
+  padding: 0;
+}
+
+section#message-box form #submit {
+  margin-top: 10px;
 }
