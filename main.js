@@ -1,75 +1,3 @@
-var receiveMsgForm = document.getElementById("receive-message-form");
-var receiveMsgBtn = document.getElementById("receive-message-button");
-var infoAddMsgBtn = document.getElementById("add-message-button");
-var meditateImg = document.getElementById("meditate-img");
-var messageTxt = document.getElementById("message-txt");
-var newMsgForm = document.getElementById("new-message-form");
-var submitBtn = document.getElementById("submit-button");
-var errorMsg = document.getElementById("error-message");
-
-
-receiveMsgForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-});
-receiveMsgBtn.addEventListener("click",function() {
-  var radios = document.querySelectorAll("input[name='type']");
-  var selectedType;
-  for(var i = 0; i < radios.length; i++ ) {
-    if (radios[i].checked) {
-      selectedType = radios[i].value;
-      break;
-    }
-  }
-  if(!selectedType) {
-    return;
-  }
-  var selectedText;
-  if (selectedType === "affirmations") {
-    selectedText = getRandomText(affirmations);
-  } else {
-    selectedText = getRandomText(mantras);
-  }
-  messageTxt.innerHTML = selectedText;
-  messageTxt.classList.remove("hidden");
-  meditateImg.classList.add("hidden");
-  newMsgForm.classList.add("hidden");
-});
-
-newMsgForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-});
-
-infoAddMsgBtn.addEventListener("click", function() {
-  newMsgForm.classList.remove("hidden");
-  meditateImg.classList.add("hidden");
-  messageTxt.classList.add("hidden");
-
-});
-
-submitBtn.addEventListener("click", function() {
-  var radios = document.querySelectorAll("input[name='new-type']");
-  var selectedType;
-  for(var i = 0; i < radios.length; i++ ) {
-    if (radios[i].checked) {
-      selectedType = radios[i].value;
-      break;
-    }
-  }
-  if(!selectedType) {
-    errorMsg.classList.remove("hidden");
-    return;
-  }
-  errorMsg.classList.add("hidden");
-
-})
-
-
-function getRandomText(array) {
-  return array[Math.floor(Math.random() * array.length)];
-};
-
-
-
 var affirmations =[
   'I forgive myself and set myself free.',
   'I believe I can be all that I want to be.',
@@ -87,7 +15,7 @@ var affirmations =[
 ];
 var mantras = [
   'Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.',
-  'Don’t let yesterday take up too much of today.',
+  'Don\'t let yesterday take up too much of today.',
   'Every day is a second chance.',
   'Tell the truth and love everyone.',
   'I am free from sadness.',
@@ -102,3 +30,104 @@ var mantras = [
   'Onward and upward.',
   'I am the sky, the rest is weather.'
 ];
+
+var receiveMsgForm = document.getElementById("receive-message-form");
+var receiveMsgBtn = document.getElementById("receive-message-button");
+var infoAddMsgBtn = document.getElementById("add-message-button");
+var meditateImg = document.getElementById("meditate-img");
+var messageTxt = document.getElementById("message-txt");
+var newMsgForm = document.getElementById("new-message-form");
+var submitBtn = document.getElementById("submit-button");
+var errorMsg = document.getElementById("error-message");
+var messageFld = document.getElementById("message-field");
+
+receiveMsgForm.addEventListener("submit", preventDflt);
+newMsgForm.addEventListener("submit", preventDflt);
+receiveMsgBtn.addEventListener("click", showRandomMsg);
+infoAddMsgBtn.addEventListener("click", showNewMsgForm);
+submitBtn.addEventListener("click", addNewMsg);
+
+function preventDflt(event) {
+  event.preventDefault();
+};
+
+function getRandomText(array) {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
+function showErrorMessage(msg) {
+  errorMsg.innerHTML = msg;
+  errorMsg.classList.remove("hidden");
+}
+
+function hideErrorMessage() {
+  errorMsg.classList.add("hidden");
+}
+
+function showNewMsgForm() {
+  newMsgForm.classList.remove("hidden");
+  meditateImg.classList.add("hidden");
+  messageTxt.classList.add("hidden");
+};
+
+function setMessage(text) {
+  messageTxt.innerHTML = text;
+  newMsgForm.classList.add("hidden");
+  meditateImg.classList.add("hidden");
+  messageTxt.classList.remove("hidden");
+};
+
+function getSelectedType(name){
+  var radios = document.querySelectorAll(`input[name='${name}']`);
+  var selectedType;
+  for(var i = 0; i < radios.length; i++ ) {
+    if (radios[i].checked) {
+      selectedType = radios[i].value;
+      break;
+    }
+  }
+  return selectedType;
+};
+
+function clearRadios(name) {
+  var radios = document.querySelectorAll(`input[name='${name}']`);
+  for(var i = 0; i < radios.length; i++ ) {
+    radios[i].checked = false;
+  }
+};
+
+function showRandomMsg() {
+  var selectedType = getSelectedType("type")
+  if(!selectedType) {
+    return;
+  }
+  var selectedText;
+  if (selectedType === "affirmations") {
+    selectedText = getRandomText(affirmations);
+  } else {
+    selectedText = getRandomText(mantras);
+  }
+  setMessage(selectedText);
+};
+
+function addNewMsg() {
+  var selectedType = getSelectedType("new-type");
+  if(!selectedType) {
+    showErrorMessage("Error: Please select affirmations or mantra!");
+    return;
+  }
+  var newMessage = messageFld.value;
+  if (!newMessage) {
+    showErrorMessage("Error: Please add message!");
+    return;
+  }
+  hideErrorMessage();
+  if(selectedType === "affirmations") {
+    affirmations.push(newMessage);
+  } else {
+    mantras.push(newMessage);
+  }
+  setMessage(newMessage);
+  messageFld.value = "";
+  clearRadios("new-type");
+};
